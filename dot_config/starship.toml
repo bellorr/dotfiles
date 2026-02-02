@@ -1,0 +1,73 @@
+# ~/.config/starship.toml
+"$schema" = 'https://starship.rs/config-schema.json'
+#add_newline = true
+format = "$directory $git_branch $git_status$fill$status $python $kubernetes ${custom.openstack}$line_break$character "
+
+[profiles]
+transient="""
+$directory\
+$line_break\
+$character\
+"""
+
+# --- Prompt Character (Exit Code Colors) --- #
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+# --- Directory (Status Line Anchor) --- #
+[directory]
+truncation_length = 0
+truncate_to_repo = false 
+style = "bold blue"
+format = "[$path]($style)" 
+
+# --- Git Branch --- #
+[git_branch]
+symbol = "" # Git Fork Icon (e725)
+style = "bold purple"
+format = '[$symbol:$branch(:$remote_branch)]($style)' 
+
+# --- Git Status --- #
+[git_status]
+#stashed = "📦"
+staged = "[ ++](green)"
+modified = "[ !!](yellow)"
+format = '[$stashed$staged$modified]($style)'
+
+# --- Python Virtual Environment --- #
+[python]
+symbol = "🐍"
+format = '[$symbol\($virtualenv\)]($style)'
+style = "bold yellow"
+
+# --- Kubernetes Context & Namespace --- #
+[kubernetes]
+format = '[$context\($namespace\)]($style)'
+style = "bold cyan"
+disabled = false
+
+# --- Openstack Cloud & Project --- #
+[custom.openstack]
+command = 'printf "%s" "$NSC_REGION(${OS_PROJECT_NAME:+$OS_PROJECT_NAME})"'
+when = 'test -n "$NSC_REGION"'
+format = '[$output]($style)'
+symbol = "☁️"
+style = "bold red"
+
+# --- Status --- #
+[status]
+#success_symbol = "☜\\(ﾟヮﾟ☜\\)"
+#success_style = "bold green"
+symbol = "¯\\\\_\\(ツ\\)_/¯"
+failure_style = "bold red"
+format = '[$symbol$common_meaning$signal_name$maybe_int]($style)'
+disabled = false
+
+# --- Line Break --- #
+[line_break]
+format = "\n\r"
+
+# --- Fill (Between left and right format) --- #
+[fill]
+#symbol = ' '
