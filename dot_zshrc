@@ -1,0 +1,57 @@
+
+
+#### Plugins ####
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#### Modules ####
+[[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
+[[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
+[[ -f ~/.zsh/integrations.zsh ]] && source ~/.zsh/integrations.zsh
+[[ -f ~/.zsh/paths.zsh ]] && source ~/.zsh/paths.zsh
+[[ -f ~/.zsh/vars.zsh ]] && source ~/.zsh/vars.zsh
+[[ -f ~/.zsh/ns_aliases.zsh ]] && source ~/.zsh/ns_aliases.zsh
+
+#### Completion Engine ####
+autoload -Uz +X compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+compdef kubecolor=kubectl
+
+# History Settings
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=20000
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+unsetopt SHARE_HISTORY
+
+#### Init ####
+export BAT_THEME=ansi
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+eval "$(starship init zsh)"
+
+### Transient Prompt ####
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd transient-prompt-precmd
+
+TRANSIENT_PROMPT="${PROMPT// prompt / prompt --profile transient }"
+
+function transient-prompt-precmd {
+    # Fix ctrl+c behavior
+    TRAPINT() { transient-prompt; return $(( 128 + $1 )) }
+
+    # Save transient prompt
+    SAVED_PROMPT="$(eval "printf '%s' \"${TRANSIENT_PROMPT}\"")"
+}
+
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget zle-line-finish transient-prompt
+
+function transient-prompt() {
+    # Add a newline to prevent overwriting the last line of output
+    print -n '\n'
+    # Use saved transient prompt
+    PROMPT="$SAVED_PROMPT" zle .reset-prompt
+}
