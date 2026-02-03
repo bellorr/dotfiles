@@ -1,0 +1,22 @@
+# Managed by chezmoi - Edit with: chezmoi edit ~/.zsh/vars.zsh.tmpl
+
+#### ENV VARIABLES ####
+
+# k9s config
+export K9S_CONFIG_DIR={{ .chezmoi.homeDir }}/.config/k9s/
+
+# Editor
+export EDITOR=nvim
+
+{{ if eq .machine_type "work" -}}
+# GH Token
+export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)
+# Openstack
+export OS_COMPUTE_API_VERSION=2.1
+
+# Claude Code - Vertex AI
+export GOOGLE_APPLICATION_CREDENTIALS={{ .claude_credentials_path }}
+export CLAUDE_CODE_USE_VERTEX={{ .use_vertex }}
+export ANTHROPIC_VERTEX_PROJECT_ID={{ .vertex_project_id }}
+export CLOUD_ML_REGION={{ .vertex_region }}
+{{ end -}}
