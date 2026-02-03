@@ -1,0 +1,2 @@
+# Shared defaults (committed to git)
+# Override in ~/.config/chezmoi/chezmoi.toml [data] section on each machine

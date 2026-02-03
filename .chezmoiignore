@@ -1,0 +1,17 @@
+# Files to ignore based on machine type
+
+# Ignore documentation from being copied to home directory
+README.md
+TEMPLATE_EXAMPLES.md
+
+# Example: Work-specific files only on work machines
+{{- if ne .machine_type "work" }}
+# Ignore these files on personal machine
+# .ssh/work_config
+# .kube/work_contexts
+{{- end }}
+
+{{- if ne .machine_type "personal" }}
+# Ignore these files on work machine
+# .ssh/personal_config
+{{- end }}

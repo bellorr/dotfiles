@@ -1,0 +1,9 @@
+#### Shell integrations ####
+{{- if eq .machine_type "work" }}
+if [ -f "{{ .chezmoi.homeDir }}/.tunnel-goat/shellrc_helper" ]; then
+    source "{{ .chezmoi.homeDir }}/.tunnel-goat/shellrc_helper";
+fi
+
+## kubejumper shell integration
+[ -f {{ .chezmoi.homeDir }}/.config/kubejumper/kubejumper.sh ] && source {{ .chezmoi.homeDir }}/.config/kubejumper/kubejumper.sh
+{{- end }}
