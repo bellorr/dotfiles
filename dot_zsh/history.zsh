@@ -1,3 +1,5 @@
+# Managed by chezmoi - Edit with: chezmoi edit ~/.zsh/history.zsh
+
 #### History Settings ####
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000

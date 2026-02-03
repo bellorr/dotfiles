@@ -1,3 +1,5 @@
+# Managed by chezmoi - Edit with: chezmoi edit ~/.zsh/init.zsh
+
 #### Init ####
 export BAT_THEME=ansi
 eval "$(zoxide init zsh)"

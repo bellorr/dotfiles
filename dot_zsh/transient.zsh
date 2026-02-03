@@ -1,3 +1,5 @@
+# Managed by chezmoi - Edit with: chezmoi edit ~/.zsh/transient.zsh
+
 #### Transient Prompt ####
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd transient-prompt-precmd

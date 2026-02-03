@@ -1,3 +1,5 @@
+# Managed by chezmoi - Edit with: chezmoi edit ~/.zsh/aliases.zsh
+
 alias c='clear'
 alias h='history'
 alias mkdir='mkdir -p'

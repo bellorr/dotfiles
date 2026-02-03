@@ -1,3 +1,4 @@
+# Managed by chezmoi - Edit with: chezmoi edit ~/.zshrc
 
 #### Plugins ####
 [[ -f ~/.zsh/plugins.zsh ]] && source ~/.zsh/plugins.zsh
