@@ -4,10 +4,10 @@
 [[ -f ~/.zsh/plugins.zsh ]] && source ~/.zsh/plugins.zsh
 
 #### Core Modules ####
-[[ -f ~/.zsh/completion.zsh ]] && source ~/.zsh/completion.zsh
 [[ -f ~/.zsh/vars.zsh ]] && source ~/.zsh/vars.zsh
 [[ -f ~/.zsh/paths.zsh ]] && source ~/.zsh/paths.zsh
 [[ -f ~/.zsh/history.zsh ]] && source ~/.zsh/history.zsh
+[[ -f ~/.zsh/completion.zsh ]] && source ~/.zsh/completion.zsh
 
 #### User Modules ####
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
