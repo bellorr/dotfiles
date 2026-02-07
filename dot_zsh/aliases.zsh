@@ -21,7 +21,7 @@ alias gdu='gdu-go'
 alias disk='gdu'
 #alias grep='rg'
 alias top='btop'
-#alias wget='wget2'
+alias wget='wget2'
 
 alias dnslookup="dig +noall +answer"
 
